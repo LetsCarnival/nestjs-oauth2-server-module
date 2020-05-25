@@ -45,6 +45,6 @@ export class AccessTokenEntity {
     @Column('timestamp', {name: 'created_on', nullable: false, default: () => 'now()'})
     createdAt: Date;
 
-    @Column({name: 'created_from', type: 'jsonb', nullable: true})
+    @Column({name: 'created_from', type: 'json', nullable: true})
     createdFrom: OAuth2Request;
 }
