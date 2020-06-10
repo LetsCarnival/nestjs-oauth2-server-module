@@ -1,11 +1,3 @@
-<p align="center">
-  <a href="http://switchit-conseil.com/" target="blank">
-    <img src="https://switchit-conseil.com/wp-content/uploads/2019/08/switch-it-logo-1.png" width="320" alt="SwitchIt - Conseil Logo" />
-  </a>
-</p>
-
-<p align="center"><strong>We build your next generation software !</strong></p>
-
 # OAuth2 Server Module [![CircleCI](https://circleci.com/gh/switchit-conseil/nestjs-oauth2-server-module.svg?style=svg)](https://circleci.com/gh/switchit-conseil/nestjs-oauth2-server-module)
 
 This module turns your [NestJS Application](https://nestjs.com) into an OAuth2 Server. It is based on
@@ -22,7 +14,7 @@ npm install --save @mia-burton/nestjs-oauth2-server # or yarn install @mia-burto
 
 ## Usage
 
-## Adding the entities to your TypeORM configuration
+### Adding the entities to your TypeORM configuration
 
 The module comes with entities you have to add the configuration `node_modules/@mia-burton/**/*.entity.js`
 to let typeorm scan your entities or add them to the `entitie` configuration variable in TypeORM.
@@ -149,7 +141,7 @@ curl -X POST http://localhost:3000/oauth2/token -d '{"grant_type":"refresh_token
 Used to refresh an existing token
 
 ```bash
-curl -X POST http://localhost:3000/oauth2/token -d '{"grantType":"password", "clientId":"6ab1cfab-0b3d-418b-8ca2-94d98663fb6f", "clientSecret": "secret", username": "j.doe@change.me", "password": "changeme", "scopes": ["app-1"]}'
+curl -X POST http://localhost:3000/oauth2/token -d '{"grant_type":"password", "client_id":"6ab1cfab-0b3d-418b-8ca2-94d98663fb6f", "client_secret": "secret", username": "j.doe@change.me", "password": "changeme", "scopes": ["app-1"]}'
 ```
 
 ## Securing your routes using the `AccessTokenStrategy`
