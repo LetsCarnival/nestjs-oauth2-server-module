@@ -4,7 +4,7 @@ import {
     ForbiddenException,
     Inject,
     Post,
-    Query,
+    Body,
     UseInterceptors,
 } from "@nestjs/common";
 import {
@@ -33,7 +33,7 @@ export class Oauth2Controller {
     }
 
     @Post('token')
-    async token(@Query() request: OAuth2Request): Promise<OAuth2Response> {
+    async token(@Body() request: OAuth2Request): Promise<OAuth2Response> {
         const client = await this.clientRepository.findByClientId(request.clientId);
         if (!await this.strategyRegistry.validate(request,client)) {
             throw new ForbiddenException("You are not allowed to access the given resource");

@@ -17,10 +17,15 @@ This module turns your [NestJS Application](https://nestjs.com) into an OAuth2 S
 ## Installation
 
 ```bash
-npm install --save @switchit/nestjs-oauth2-server # or yarn install @switchit/nestjs-oauth2-server
+npm install --save @mia-burton/nestjs-oauth2-server # or yarn install @mia-burton/nestjs-oauth2-server
 ```
 
 ## Usage
+
+## Adding the entities to your TypeORM configuration
+
+The module comes with entities you have to add the configuration `node_modules/@mia-burton/**/*.entity.js`
+to let typeorm scan your entities or add them to the `entitie` configuration variable in TypeORM.
 
 ### Implement the `UserValidatorInterface`
 
@@ -31,7 +36,7 @@ to validate that the given `username` and `password` matches with a user in your
 
 ```typescript
 import {Injectable} from "@nestjs/common";
-import {UserValidatorInterface, UserInterface, InvalidUserException} from "@switchit/nestjs-oauth2-server";
+import {UserValidatorInterface, UserInterface, InvalidUserException} from "@mia-burton/nestjs-oauth2-server";
 
 @Injectable()
 export class UserValidator implements UserValidatorInterface {
@@ -65,7 +70,7 @@ The user is then accessible in the request context of your application.
 
 ```typescript
 import {Injectable} from "@nestjs/common";
-import {UserLoaderInterface, UserInterface, InvalidUserException} from "@switchit/nestjs-oauth2-server";
+import {UserLoaderInterface, UserInterface, InvalidUserException} from "@mia-burton/nestjs-oauth2-server";
 
 @Injectable()
 export class UserLoader implements UserLoaderInterface {
@@ -85,7 +90,7 @@ Import the OAuth2Module into the root AppModule.
 ```typescript
 //app.module.ts
 import { Module } from '@nestjs/common';
-import { OAuth2Module } from '@switchit/nestjs-oauth2-server';
+import { OAuth2Module } from '@mia-burton/nestjs-oauth2-server';
 
 @Module({
     imports: [
@@ -103,7 +108,7 @@ Of course you can use an async configuration:
 ```typescript
 //app.module.ts
 import { Module } from '@nestjs/common';
-import { OAuth2Module } from '@switchit/nestjs-oauth2-server';
+import { OAuth2Module } from '@mia-burton/nestjs-oauth2-server';
 
 @Module({
     imports: [
@@ -144,7 +149,7 @@ curl -X POST http://localhost:3000/oauth2/token -d '{"grant_type":"refresh_token
 Used to refresh an existing token
 
 ```bash
-curl -X POST http://localhost:3000/oauth2/token -d '{"grant_type":"password", "client_id":"6ab1cfab-0b3d-418b-8ca2-94d98663fb6f", "username": "j.doe@change.me", "password": "changeme", "scopes": ["app-1"]}'
+curl -X POST http://localhost:3000/oauth2/token -d '{"grantType":"password", "clientId":"6ab1cfab-0b3d-418b-8ca2-94d98663fb6f", "clientSecret": "secret", username": "j.doe@change.me", "password": "changeme", "scopes": ["app-1"]}'
 ```
 
 ## Securing your routes using the `AccessTokenStrategy`
@@ -162,11 +167,6 @@ export class TestSecuredController {
     }
 }
 ```
-
-## Adding the entities to your TypeORM configuration
-
-**IMPORTANT**: The module comes with entities you have to add the configuration `node_modules/@switchit/**/*.entity.js`
-to let typeorm scan your entities or add them to the `entitie` configuration variable in TypeORM.
 
 ## Using the global validation pipes
 

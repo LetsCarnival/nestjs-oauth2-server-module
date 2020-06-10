@@ -45,7 +45,7 @@ export class CreateClientHandler implements ICommandHandler<CreateClientCommand>
         client.publicKey = pem.public;
         client.cert = pem.cert;
 
-        var exp = new Date();
+        const exp = new Date();
         exp.setDate(exp.getDate() + 365);
         client.certExpiresAt = exp;
 
