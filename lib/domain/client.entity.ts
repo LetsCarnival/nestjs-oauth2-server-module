@@ -1,6 +1,6 @@
 import {Column, Entity, PrimaryGeneratedColumn, Unique} from "typeorm";
 
-@Entity('gb_oauth_client')
+@Entity('oauth_client')
 @Unique(['clientId'])
 export class ClientEntity {
     @PrimaryGeneratedColumn('uuid')
@@ -36,10 +36,10 @@ export class ClientEntity {
     @Column({name: 'refresh_token_lifetime', nullable: false, default: 7200})
     refreshTokenLifetime: number;
 
-    @Column({type: 'text', nullable: false})
+    @Column({type: 'text', name: 'private_key', nullable: false})
     privateKey: string;
 
-    @Column({type: 'text', nullable: false})
+    @Column({type: 'text', name: 'public_key', nullable: false})
     publicKey: string;
 
     @Column({type: 'text', nullable: false})

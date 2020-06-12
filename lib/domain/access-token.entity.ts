@@ -2,7 +2,7 @@ import {Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn} from "typ
 import {ClientEntity} from "./client.entity";
 import {OAuth2Request} from "../ui";
 
-@Entity('gb_oauth_access_token')
+@Entity('oauth_access_token')
 export class AccessTokenEntity {
     @PrimaryGeneratedColumn('uuid')
     id: string;
@@ -33,7 +33,7 @@ export class AccessTokenEntity {
     @JoinColumn({name: 'client_id', referencedColumnName: 'id'})
     client: ClientEntity;
 
-    @Column({nullable: true})
+    @Column({nullable: true, name: 'user_id'})
     userId: string;
 
     /**

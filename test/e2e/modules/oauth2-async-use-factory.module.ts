@@ -1,4 +1,4 @@
-import {Oauth2Module} from "../../../lib/app";
+import {OAuth2Module} from "../../../lib/app";
 import {Module} from "@nestjs/common";
 import {UserValidator} from "../mock-user/user.validator";
 import {UserLoader} from "../mock-user/user.loader";
@@ -20,7 +20,7 @@ import {UserModule} from "../mock-user/user.module";
             dropSchema: true,
             synchronize: true
         }),
-        Oauth2Module.forRootAsync({
+        OAuth2Module.forRootAsync({
             imports: [UserModule],
             useFactory: (userValidator, userLoader) => ({
                 userValidator,
