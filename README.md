@@ -177,3 +177,8 @@ async function bootstrap() {
 }
 bootstrap();
 ```
+
+
+## Additional notes
+
+### Changed table name removing "gb" prefix
