@@ -22,7 +22,7 @@ export class ClientCredentialsStrategy implements Oauth2GrantStrategyInterface {
     }
 
     async validate(request: OAuth2Request, client: ClientEntity): Promise<boolean> {
-        if (client.clientSecret !== request.clientSecret || !request.clientSecret || client.deletedAt !== null || !client.grants.includes(request.grantType)) {
+        if (client.clientSecret !== request.client_secret || !request.client_secret || client.deletedAt !== null || !client.grants.includes(request.grant_type)) {
             return false;
         }
 

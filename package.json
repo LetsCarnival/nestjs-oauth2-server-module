@@ -1,5 +1,5 @@
 {
-  "name": "@mia-burton/nestjs-oauth2-server",
+  "name": "@LetsCarnival/nestjs-oauth2-server",
   "version": "0.2.1",
   "description": "NestJS oauth2 server by MiaBurton inspired by SWITCH IT CONSULTING",
   "author": "Switch IT - Consulting",
@@ -16,15 +16,15 @@
     "framework"
   ],
   "bugs": {
-    "url": "https://github.com/mia-burton/nestjs-oauth2-server-module/issues"
+    "url": "https://github.com/letscarnival/nestjs-oauth2-server-module/issues"
   },
-  "homepage": "https://github.com/mia-burton/nestjs-oauth2-server-module#readme",
+  "homepage": "https://github.com/letscarnival/nestjs-oauth2-server-module#readme",
   "contributors": [
     "Nicolas Macherey <nicolas.macherey@gmail.com>"
   ],
   "repository": {
     "type": "git",
-    "url": "git@github.com:mia-burton/nestjs-oauth2-server-module.git"
+    "url": "git@github.com:letscarnival/nestjs-oauth2-server-module.git"
   },
   "scripts": {
     "build": "./node_modules/.bin/rimraf dist && tsc -p tsconfig.json",

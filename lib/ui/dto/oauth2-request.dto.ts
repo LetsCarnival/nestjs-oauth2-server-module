@@ -13,7 +13,7 @@ export class OAuth2Request {
     })
     @IsNotEmpty()
     @Expose({ name: "grant_type" })
-    grantType: string;
+    grant_type: string;
 
     @ApiModelProperty({
         type:String,
@@ -22,7 +22,7 @@ export class OAuth2Request {
     })
     @IsNotEmpty()
     @Expose({ name: "client_id" })
-    clientId: string;
+    client_id: string;
 
     @ApiModelProperty({
         type:String,
@@ -30,7 +30,7 @@ export class OAuth2Request {
         required: true
     })
     @Expose({ name: "client_secret" })
-    clientSecret: string;
+    client_secret: string;
 
     @ApiModelProperty({
         type: Number,
@@ -59,7 +59,7 @@ export class OAuth2Request {
         description: 'The refresh token only when grant_type is set to "refresh_token"',
     })
     @Expose({ name: "refresh_token"})
-    refreshToken?: string;
+    refresh_token?: string;
 
     @ApiModelProperty({
         type: String,

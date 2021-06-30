@@ -26,9 +26,9 @@ export class PasswordStrategy implements Oauth2GrantStrategyInterface {
 
     async validate(request: OAuth2Request, client: ClientEntity): Promise<boolean> {
         if (
-            (client.clientSecret && client.clientSecret !== request.clientSecret) ||
+            (client.clientSecret && client.clientSecret !== request.client_secret) ||
             client.deletedAt !== null ||
-            !client.grants.includes(request.grantType)
+            !client.grants.includes(request.grant_type)
         ) {
             return false;
         }

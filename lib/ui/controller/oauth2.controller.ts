@@ -34,7 +34,7 @@ export class Oauth2Controller {
 
     @Post('token')
     async token(@Body() request: OAuth2Request): Promise<OAuth2Response> {
-        const client = await this.clientRepository.findByClientId(request.clientId);
+        const client = await this.clientRepository.findByClientId(request.client_id);
         if (!await this.strategyRegistry.validate(request,client)) {
             throw new ForbiddenException("You are not allowed to access the given resource");
         }

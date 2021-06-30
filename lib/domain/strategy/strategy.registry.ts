@@ -52,11 +52,11 @@ export class Oauth2GrantStrategyRegistry {
      * @param client
      */
     async validate(request: OAuth2Request, client: ClientEntity): Promise<boolean> {
-        if (!(request.grantType in this.registry)) {
-            throw new HttpException(`Cannot find the a strategy for the grant type "${request.grantType}"`, 400);
+        if (!(request.grant_type in this.registry)) {
+            throw new HttpException(`Cannot find the a strategy for the grant type "${request.grant_type}"`, 400);
         }
 
-        return await this.registry[request.grantType].validate(request, client);
+        return await this.registry[request.grant_type].validate(request, client);
     }
 
     /**
@@ -66,11 +66,11 @@ export class Oauth2GrantStrategyRegistry {
      * @param client
      */
     async getOauth2Response(request: OAuth2Request, client: ClientEntity): Promise<OAuth2Response> {
-        if (!(request.grantType in this.registry)) {
-            throw new HttpException(`Cannot find the a strategy for the grant type "${request.grantType}"`, 400);
+        if (!(request.grant_type in this.registry)) {
+            throw new HttpException(`Cannot find the a strategy for the grant type "${request.grant_type}"`, 400);
         }
 
-        return await this.registry[request.grantType].getOauth2Response(request, client);
+        return await this.registry[request.grant_type].getOauth2Response(request, client);
     }
 
     private reflectStrategyName(strategy: Oauth2GrantStrategyType): string {

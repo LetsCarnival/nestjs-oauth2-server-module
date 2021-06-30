@@ -26,9 +26,9 @@ export class RefreshTokenStrategy implements Oauth2GrantStrategyInterface {
 
     async validate(request: OAuth2Request, client: ClientEntity): Promise<boolean> {
         if (
-            (client.clientSecret && client.clientSecret !== request.clientSecret) ||
+            (client.clientSecret && client.clientSecret !== request.client_secret) ||
             client.deletedAt !== null ||
-            !client.grants.includes(request.grantType)) {
+            !client.grants.includes(request.grant_type)) {
             return false;
         }
 
@@ -36,7 +36,7 @@ export class RefreshTokenStrategy implements Oauth2GrantStrategyInterface {
     }
 
     async getOauth2Response(request: OAuth2Request, client: ClientEntity): Promise<OAuth2Response> {
-        const expiredToken = await this.accessTokenRepository.findByRefreshToken(request.refreshToken);
+        const expiredToken = await this.accessTokenRepository.findByRefreshToken(request.refresh_token);
         if (expiredToken.refreshTokenExpiresAt < new Date(Date.now()) || expiredToken.client.clientId !== client.clientId) {
             throw new UnauthorizedException("You are not allowed to access the given resource");
         }
@@ -50,8 +50,8 @@ export class RefreshTokenStrategy implements Oauth2GrantStrategyInterface {
             exp,
             iat,
             {
-                clientId: expiredToken.client.clientId,
-                clientSecret: expiredToken.client.clientSecret,
+                client_id: expiredToken.client.clientId,
+                client_secret: expiredToken.client.clientSecret,
                 exp,
                 iat,
                 scopes: JSON.parse(expiredToken.scope),
