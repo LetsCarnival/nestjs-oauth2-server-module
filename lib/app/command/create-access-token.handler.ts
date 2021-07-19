@@ -33,7 +33,6 @@ export class CreateAccessTokenHandler implements ICommandHandler<CreateAccessTok
         const accessToken = new AccessTokenEntity();
         accessToken.client = client;
         accessToken.createdAt = new Date();
-        accessToken.createdFrom = command.request;
         accessToken.scope = command.scope;
 
         // generate access & refresh tokens
